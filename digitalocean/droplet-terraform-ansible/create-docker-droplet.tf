@@ -11,13 +11,17 @@ provider "digitalocean" {
   token = var.digitalocean_token
 }
 
-# get the SSH key with the name of 'Gaming PC'
+/*
+Get the SSH key (from your DigitalOcean account) that matches the given name.
+You can view these keys with the 'doctl' cli tool:
+    doctl compute ssh-key list
+*/
 data "digitalocean_ssh_key" "windows" {
-  name = "Gaming PC"
+  name = var.ssh_key_name_1
 }
 
 data "digitalocean_ssh_key" "wsl2" {
-  name = "Gaming PC - wsl"
+  name = var.ssh_key_name_2
 }
 
 # Create a new Web Droplet in the nyc2 region
